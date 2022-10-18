@@ -6,12 +6,14 @@
 //
 
 import SwiftUI
+import DependencyInjection
 
 @main
 struct ios_navigation_stack_sampleApp: App {
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(model: .init())
         }
     }
 }
