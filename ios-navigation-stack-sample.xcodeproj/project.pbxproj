@@ -29,7 +29,6 @@
 		5848518128FEC19100694341 /* SettingsRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5848518028FEC19100694341 /* SettingsRoute.swift */; };
 		5848518328FEC2B000694341 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5848518228FEC2B000694341 /* ProfileView.swift */; };
 		5848518628FEC97B00694341 /* LoginError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5848518528FEC97B00694341 /* LoginError.swift */; };
-		5848518928FEEDF800694341 /* DependencyInjection in Frameworks */ = {isa = PBXBuildFile; productRef = 5848518828FEEDF800694341 /* DependencyInjection */; };
 		589E0A652901622D0042E91B /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589E0A642901622D0042E91B /* Character.swift */; };
 		589E0A67290162E60042E91B /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589E0A66290162E60042E91B /* Episode.swift */; };
 		589E0A692901632D0042E91B /* CharacterDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589E0A682901632D0042E91B /* CharacterDetailViewModel.swift */; };
@@ -92,7 +91,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5848518928FEEDF800694341 /* DependencyInjection in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -328,7 +326,6 @@
 			);
 			name = "ios-navigation-stack-sample";
 			packageProductDependencies = (
-				5848518828FEEDF800694341 /* DependencyInjection */,
 			);
 			productName = "ios-navigation-stack-sample";
 			productReference = 58E8F03928EDBE4500C0B357 /* ios-navigation-stack-sample.app */;
@@ -359,7 +356,6 @@
 			);
 			mainGroup = 58E8F03028EDBE4500C0B357;
 			packageReferences = (
-				5848514E28FD96E000694341 /* XCRemoteSwiftPackageReference "ios-dependency-injection" */,
 			);
 			productRefGroup = 58E8F03A28EDBE4500C0B357 /* Products */;
 			projectDirPath = "";
@@ -627,25 +623,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		5848514E28FD96E000694341 /* XCRemoteSwiftPackageReference "ios-dependency-injection" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/strvcom/ios-dependency-injection/";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		5848518828FEEDF800694341 /* DependencyInjection */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 5848514E28FD96E000694341 /* XCRemoteSwiftPackageReference "ios-dependency-injection" */;
-			productName = DependencyInjection;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 58E8F03128EDBE4500C0B357 /* Project object */;
 }
