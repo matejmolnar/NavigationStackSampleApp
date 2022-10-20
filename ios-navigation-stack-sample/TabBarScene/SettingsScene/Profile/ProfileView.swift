@@ -15,7 +15,7 @@ struct ProfileView: View {
     var body: some View {
         VStack {
             Button {
-                model.tapLogout()
+                model.logout()
                 router.root = .login
             } label: {
                 Text("Logout")

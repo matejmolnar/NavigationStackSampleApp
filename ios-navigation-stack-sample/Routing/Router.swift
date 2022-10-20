@@ -9,10 +9,18 @@ import SwiftUI
 
 // This object holds navigation state of the whole App
 class Router: ObservableObject {
-    @Published var root: NavigationRoot
     @Published var onboardingPath: [OnboardingRoute]
     @Published var loginPath: [LoginRoute]
     @Published var tabBar: TabBar
+    @Published var root: NavigationRoot {
+        willSet {
+            switch newValue {
+            case .login: loginPath = []
+            case .onboarding: onboardingPath = []
+            case .tabBar: tabBar = .init()
+            }
+        }
+    }
     
     init(
         root: NavigationRoot,
