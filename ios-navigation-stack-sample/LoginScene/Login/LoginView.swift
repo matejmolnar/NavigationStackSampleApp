@@ -7,29 +7,10 @@
 
 import SwiftUI
 
-class LoginViewModel: ObservableObject {
-    @AppStorage("loggedIn") private var loggedIn: Bool = false
-    
-    @Published var email = ""
-    @Published var password = ""
-    
-    func login() throws {
-        guard !email.isEmpty else {
-            throw LoginError.emailEmpty
-        }
-        
-        guard !password.isEmpty else {
-            throw LoginError.passwordEmpty
-        }
-        
-        loggedIn = true
-    }
-}
-
 struct LoginView: View {
     @StateObject var model: LoginViewModel
     @EnvironmentObject private var router: Router
-    @State var error: Error?
+    @State private var error: Error?
     
     var body: some View {
         NavigationStack(path: $router.loginPath) {
@@ -62,13 +43,13 @@ extension LoginView {
             }
             .padding(.top, 20)
             
-            Button("Register") {
-                router.loginPath.append(.registration(email: model.email, password: model.password))
+            NavigationLink(value: LoginRoute.registration(email: model.email, password: model.password)) {
+                Text("Sign up")
             }
             .padding(.top, 50)
             
-            Button("Forgot password?") {
-                router.loginPath.append(.forgotPassword(email: model.email))
+            NavigationLink(value: LoginRoute.forgotPassword(email: model.email)) {
+                Text("Forgot password?")
             }
             .padding(.top, 10)
         }
@@ -76,7 +57,7 @@ extension LoginView {
         .navigationTitle("Login")
         .alert(isPresented: .constant(error != nil)) {
             Alert(
-                title: Text("Login error"),
+                title: Text("Login failed"),
                 message: Text(error?.localizedDescription ?? ""),
                 dismissButton: .default(Text("OK")) {
                     error = nil

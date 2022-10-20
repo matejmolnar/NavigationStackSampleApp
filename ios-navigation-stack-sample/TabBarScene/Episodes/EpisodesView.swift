@@ -1,5 +1,5 @@
 //
-//  CharactersView.swift
+//  EpisodesView.swift
 //  ios-navigation-stack-sample
 //
 //  Created by Matej Molnár on 18.10.2022.
@@ -7,23 +7,15 @@
 
 import SwiftUI
 
-struct Character: Equatable, Hashable {
-    let name: String
-}
-
-struct CharactersView: View {
+struct EpisodesView: View {    
     @EnvironmentObject private var router: Router
     
     var body: some View {
-        NavigationStack(path: $router.tabBar.charactersPath) {
+        NavigationStack(path: $router.tabBar.episodesPath) {
             VStack {
                 List(1..<10) { number in
-                    NavigationLink(value: TabRoute.character(
-                        character: Character(name: "Character \(number)"),
-                        route: nil
-                        )
-                    ) {
-                      Text("Character \(number)")
+                    NavigationLink(value: TabRoute.episode(Episode(name: "Episode \(number)"))) {
+                      Text("Episode \(number)")
                     }
                 }
             }
@@ -36,7 +28,7 @@ struct CharactersView: View {
                     }
                 }
             }
-            .navigationTitle("Characters")
+            .navigationTitle("Episodes")
             .navigationDestination(for: TabRoute.self) { route in
                 switch route {
                 case let .character(character, .none):

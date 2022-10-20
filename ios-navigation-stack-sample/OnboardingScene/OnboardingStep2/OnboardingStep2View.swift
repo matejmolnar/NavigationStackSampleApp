@@ -7,14 +7,6 @@
 
 import SwiftUI
 
-class OnboardingStep2ViewModel: ObservableObject {
-    @AppStorage("onboardingCompleted") private var onboardingCompleted: Bool = false
-    
-    func tapLogin() {
-        onboardingCompleted = true
-    }
-}
-
 struct OnboardingStep2View: View {
     @StateObject var model: OnboardingStep2ViewModel
     @EnvironmentObject private var router: Router
@@ -22,10 +14,10 @@ struct OnboardingStep2View: View {
     var body: some View {
         VStack {
             Button {
-                model.tapLogin()
+                model.complete()
                 router.root = .login
             } label: {
-                Text("Login")
+                Text("Complete")
             }
         }
         .navigationTitle("Second Step")

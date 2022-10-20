@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SettingsView: View {
     @EnvironmentObject private var router: Router
+    @Environment(\.dismiss) private var dismiss
     
     var body: some View {
         NavigationStack(path: $router.tabBar.settingsPath) {
@@ -22,7 +23,7 @@ struct SettingsView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
-                        router.tabBar.isSettingsPresented = false
+                        dismiss()
                     } label: {
                         Image(systemName: "x.circle")
                     }

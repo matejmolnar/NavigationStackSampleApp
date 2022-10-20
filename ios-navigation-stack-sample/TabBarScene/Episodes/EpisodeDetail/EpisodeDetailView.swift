@@ -7,14 +7,6 @@
 
 import SwiftUI
 
-class EpisodeDetailViewModel: ObservableObject {
-    @Published var title: String
-    
-    init(episode: Episode) {
-        title = episode.name
-    }
-}
-
 struct EpisodeDetailView: View {
     @StateObject var model: EpisodeDetailViewModel
     

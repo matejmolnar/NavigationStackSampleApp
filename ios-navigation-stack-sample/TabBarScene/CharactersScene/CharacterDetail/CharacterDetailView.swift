@@ -7,16 +7,6 @@
 
 import SwiftUI
 
-class CharacterDetailViewModel: ObservableObject {
-    @Published var sheetModel: CharacterSheetModel?
-    @Published var title: String
-    
-    init(character: Character, sheetModel: CharacterSheetModel? = nil) {
-        _sheetModel = .init(initialValue: sheetModel)
-        title = character.name
-    }
-}
-
 struct CharacterDetailView: View {
     @StateObject var model: CharacterDetailViewModel
     

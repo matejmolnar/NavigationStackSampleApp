@@ -8,5 +8,5 @@
 import Foundation
 
 enum CharacterRoute: Hashable {
-    case sheet(CharacterSheetModel)
+    case sheet(CharacterSheetViewModel)
 }

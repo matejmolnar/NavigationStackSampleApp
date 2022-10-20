@@ -7,14 +7,6 @@
 
 import SwiftUI
 
-class ProfileViewModel: ObservableObject {
-    @AppStorage("loggedIn") private var loggedIn: Bool = false
-    
-    func tapLogout() {
-        loggedIn = false
-    }
-}
-
 struct ProfileView: View {
     @StateObject var model: ProfileViewModel
     

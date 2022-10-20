@@ -10,7 +10,6 @@ import DependencyInjection
 
 @main
 struct ios_navigation_stack_sampleApp: App {
-    
     var body: some Scene {
         WindowGroup {
             ContentView(model: .init())

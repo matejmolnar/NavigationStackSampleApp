@@ -15,13 +15,13 @@ struct TabBarView: View {
             CharactersView()
                 .tag(0)
                 .tabItem {
-                    Label("Characters", systemImage: "tray.and.arrow.down.fill")
+                    Label("Characters", systemImage: "person.2")
                 }
             
             EpisodesView()
                 .tag(1)
                 .tabItem {
-                    Label("Episodes", systemImage: "tray.and.arrow.up.fill")
+                    Label("Episodes", systemImage: "film")
                 }
         }
         .fullScreenCover(isPresented: $router.tabBar.isSettingsPresented) {

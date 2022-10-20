@@ -7,26 +7,11 @@
 
 import SwiftUI
 
-class RegistrationViewModel: ObservableObject {
-    @AppStorage("loggedIn") private var loggedIn: Bool = false
-    
-    @Published var email: String
-    @Published var password: String
-    
-    init(email: String, password: String) {
-        self.email = email
-        self.password = password
-    }
-    
-    func signUp() throws {
-        loggedIn = true
-    }
-}
-
 struct RegistrationView: View {
     @StateObject var model: RegistrationViewModel
     
     @EnvironmentObject private var router: Router
+    @State private var error: Error?
     
     var body: some View {
         VStack {
@@ -43,13 +28,22 @@ struct RegistrationView: View {
             }
             .padding(.top, 20)
             
-            Button("Forgot password?") {
-                router.loginPath.append(.forgotPassword(email: model.email))
+            NavigationLink(value: LoginRoute.forgotPassword(email: model.email)) {
+                Text("Forgot password?")
             }
             .padding(.top, 50)
         }
         .padding(.horizontal, 50)
         .navigationTitle("Registration")
+        .alert(isPresented: .constant(error != nil)) {
+            Alert(
+                title: Text("Sign up failed"),
+                message: Text(error?.localizedDescription ?? ""),
+                dismissButton: .default(Text("OK")) {
+                    error = nil
+                }
+            )
+        }
     }
 }
 
@@ -59,7 +53,7 @@ extension RegistrationView {
             try model.signUp()
             router.root = .tabBar
         } catch {
-            print("login error: \(error)")
+            self.error = error
         }
     }
 }

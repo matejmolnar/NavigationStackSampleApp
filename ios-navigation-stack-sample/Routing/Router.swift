@@ -7,11 +7,12 @@
 
 import SwiftUI
 
+// This object holds navigation state of the whole App
 class Router: ObservableObject {
     @Published var root: NavigationRoot
-    @Published var tabBar: TabBar
     @Published var onboardingPath: [OnboardingRoute]
     @Published var loginPath: [LoginRoute]
+    @Published var tabBar: TabBar
     
     init(
         root: NavigationRoot,

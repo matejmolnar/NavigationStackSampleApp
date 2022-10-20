@@ -8,13 +8,9 @@
 import SwiftUI
 
 struct OnboardingStep1View: View {
-    @EnvironmentObject private var router: Router
-    
     var body: some View {
         VStack {
-            Button {
-                router.onboardingPath.append(.step2)
-            } label: {
+            NavigationLink(value: OnboardingRoute.step2) {
                 Text("Next")
             }
         }

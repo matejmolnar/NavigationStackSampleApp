@@ -43,14 +43,13 @@ struct ContentView: View {
         .animation(.default, value: router.root)
         .environmentObject(router)
         .onOpenURL { url in
-            print(url)
-            // Parse
+            // You should parse URL and navigate to an appropriate view.
             
             router.root = .tabBar
-            router.tabBar.selectedTab = 0
-            router.tabBar.charactersPath = [
+            router.tabBar.selectedTab = 1
+            router.tabBar.episodesPath = [
                 .episode(Episode(name: "Deeplinked episode")),
-                .character(character: Character(name: "bla"), route: .sheet(.init(title: "Bro")))
+                .character(character: Character(name: "Deeplinked character"), route: .sheet(.init(title: "Deeplinked sheet")))
             ]
         }
     }
