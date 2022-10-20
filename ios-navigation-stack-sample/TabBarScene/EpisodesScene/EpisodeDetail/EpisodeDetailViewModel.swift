@@ -9,8 +9,10 @@ import SwiftUI
 
 class EpisodeDetailViewModel: ObservableObject {
     @Published var title: String
+    @Published var characters: [Character]
     
     init(episode: Episode) {
         title = episode.name
+        characters = Store.characters
     }
 }

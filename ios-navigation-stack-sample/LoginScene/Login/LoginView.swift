@@ -9,6 +9,7 @@ import SwiftUI
 
 struct LoginView: View {
     @StateObject var model: LoginViewModel
+    
     @EnvironmentObject private var router: Router
     @State private var error: Error?
     

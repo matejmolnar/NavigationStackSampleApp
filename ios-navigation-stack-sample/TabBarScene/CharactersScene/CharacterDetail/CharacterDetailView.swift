@@ -11,10 +11,10 @@ struct CharacterDetailView: View {
     @StateObject var model: CharacterDetailViewModel
     
     var body: some View {
-        VStack {
-            List(1..<10) { number in
-                NavigationLink(value: TabRoute.episode(Episode(name: "Episode \(number)"))) {
-                  Text("Episode \(number)")
+        List {
+            ForEach(model.episodes) { episode in
+                NavigationLink(value: TabRoute.episode(episode)) {
+                    Text(episode.name)
                 }
             }
         }

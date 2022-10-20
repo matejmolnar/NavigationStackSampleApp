@@ -7,6 +7,7 @@
 
 import Foundation
 
-struct Character: Equatable, Hashable {
+struct Character: Equatable, Hashable, Identifiable {
+    let id: UUID = .init()
     let name: String
 }

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct OnboardingStep2View: View {
     @StateObject var model: OnboardingStep2ViewModel
+    
     @EnvironmentObject private var router: Router
     
     var body: some View {

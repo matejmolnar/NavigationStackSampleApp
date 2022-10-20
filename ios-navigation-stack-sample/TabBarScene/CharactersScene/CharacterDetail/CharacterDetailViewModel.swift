@@ -10,9 +10,11 @@ import SwiftUI
 class CharacterDetailViewModel: ObservableObject {
     @Published var sheetModel: CharacterSheetViewModel?
     @Published var title: String
+    @Published var episodes: [Episode]
     
     init(character: Character, sheetModel: CharacterSheetViewModel? = nil) {
         _sheetModel = .init(initialValue: sheetModel)
         title = character.name
+        episodes = Store.episodes
     }
 }
