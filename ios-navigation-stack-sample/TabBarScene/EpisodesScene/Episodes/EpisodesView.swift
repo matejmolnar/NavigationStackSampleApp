@@ -16,7 +16,7 @@ struct EpisodesView: View {
         NavigationStack(path: $router.tabBar.episodesPath) {
             List {
                 ForEach(model.episodes) { episode in
-                    NavigationLink(value: TabRoute.episode(episode)) {
+                    NavigationLink(value: EpisodesRoute.episode(id: episode.id)) {
                         Text(episode.name)
                     }
                 }
@@ -31,14 +31,10 @@ struct EpisodesView: View {
                 }
             }
             .navigationTitle("Episodes")
-            .navigationDestination(for: TabRoute.self) { route in
+            .navigationDestination(for: EpisodesRoute.self) { route in
                 switch route {
-                case let .character(character, .none):
-                    CharacterDetailView(model: .init(character: character))
-                case let .character(character, .sheet(sheetModel)):
-                    CharacterDetailView(model: .init(character: character, sheetModel: sheetModel))
-                case let .episode(episode):
-                    EpisodeDetailView(model: .init(episode: episode))
+                case let .episode(id):
+                    EpisodeDetailView(model: .init(episodeId: id))
                 }
             }
         }

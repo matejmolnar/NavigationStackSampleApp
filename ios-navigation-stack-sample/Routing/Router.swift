@@ -11,7 +11,7 @@ import SwiftUI
 class Router: ObservableObject {
     @Published var onboardingPath: [OnboardingRoute]
     @Published var loginPath: [LoginRoute]
-    @Published var tabBar: TabBar
+    @Published var tabBar: TabBarRouter
     @Published var root: NavigationRoot {
         willSet {
             switch newValue {
@@ -22,11 +22,19 @@ class Router: ObservableObject {
         }
     }
     
+    private let routeTypes: [any NavigationRoute.Type] = [
+        OnboardingRoute.self,
+        LoginRoute.self,
+        SettingsRoute.self,
+        EpisodesRoute.self,
+        CharactersRoute.self
+    ]
+    
     init(
         root: NavigationRoot,
         loginPath: [LoginRoute] = [],
         onboardingPath: [OnboardingRoute] = [],
-        tabBar: TabBar = .init()
+        tabBar: TabBarRouter = .init()
     ) {
         self.root = root
         self.loginPath = loginPath
@@ -35,26 +43,68 @@ class Router: ObservableObject {
     }
 }
 
+// MARK: - Public functions
 extension Router {
-    struct TabBar {
-        var selectedTab: Int
-        var isSettingsPresented: Bool
-        var charactersPath: [TabRoute]
-        var episodesPath: [TabRoute]
-        var settingsPath: [SettingsRoute]
-        
-        init(
-            selectedTab: Int = 0,
-            isSettingsPresented: Bool = false,
-            charactersPath: [TabRoute] = [],
-            episodesPath: [TabRoute] = [],
-            settingsPath: [SettingsRoute] = []
-        ) {
-            self.selectedTab = selectedTab
-            self.isSettingsPresented = isSettingsPresented
-            self.charactersPath = charactersPath
-            self.episodesPath = episodesPath
-            self.settingsPath = settingsPath
+    func executeDeepLink(url: URL) throws {
+        guard let path = path(from: url) else {
+            throw DeepLinkError.invalidURL
         }
+        
+        switch path {
+        case let (path as [OnboardingRoute]) as Any:
+            root = .onboarding
+            onboardingPath = path
+        case let (path as [LoginRoute]) as Any:
+            root = .login
+            loginPath = path
+        case let (path as [SettingsRoute]) as Any:
+            root = .tabBar
+            tabBar.isSettingsPresented = true
+            tabBar.settingsPath = path
+        case let (path as [EpisodesRoute]) as Any:
+            root = .tabBar
+            tabBar.selectedTab = .episodes
+            tabBar.episodesPath = path
+        case let (path as [CharactersRoute]) as Any:
+            root = .tabBar
+            tabBar.selectedTab = .characters
+            tabBar.charactersPath = path
+        default: break
+        }
+    }
+}
+
+// MARK: - Private functions
+private extension Router {
+    func path(from url: URL) -> ([any NavigationRoute])? {
+        let pathComponents = Array(url.pathComponents.drop { $0 == "/"})
+        let queryDict = queryDict(for: url)
+        
+        for routeType in routeTypes {
+            if let path = routeType.path(from: pathComponents, queryDict: queryDict) {
+                return path
+            }
+        }
+        
+        return nil
+    }
+    
+    func queryDict(for url: URL) -> [String: String] {
+        var dict = [String: String]()
+
+        guard
+            let components = URLComponents(url: url, resolvingAgainstBaseURL: false),
+            let queryItems = components.queryItems
+        else {
+            return dict
+        }
+
+        for item in queryItems {
+            if let value = item.value {
+                dict[item.name] = value
+            }
+        }
+
+        return dict
     }
 }

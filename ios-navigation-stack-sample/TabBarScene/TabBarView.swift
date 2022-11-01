@@ -13,13 +13,13 @@ struct TabBarView: View {
     var body: some View {
         TabView(selection: $router.tabBar.selectedTab) {
             CharactersView(model: .init())
-                .tag(0)
+                .tag(Tab.characters)
                 .tabItem {
                     Label("Characters", systemImage: "person.2")
                 }
             
             EpisodesView(model: .init())
-                .tag(1)
+                .tag(Tab.episodes)
                 .tabItem {
                     Label("Episodes", systemImage: "film")
                 }

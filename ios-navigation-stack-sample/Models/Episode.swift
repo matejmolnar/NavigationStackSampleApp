@@ -8,6 +8,8 @@
 import Foundation
 
 struct Episode: Equatable, Hashable, Identifiable {
-    let id: UUID = .init()
-    let name: String
+    let id: Int
+    var name: String {
+        "Episode \(id)"
+    }
 }
