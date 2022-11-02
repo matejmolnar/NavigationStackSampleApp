@@ -8,15 +8,19 @@
 import SwiftUI
 
 class ContentViewModel: ObservableObject {
+    @AppStorage("userEmail") private var userEmail: String = ""
     @AppStorage("onboardingCompleted") private var onboardingCompleted: Bool = false
-    @AppStorage("loggedIn") private var loggedIn: Bool = false
     
     var initialNavigationRoot: NavigationRoot {
-        switch (onboardingCompleted, loggedIn) {
-        case (_, true): return .tabBar
-        case (true, false): return .login
-        case (false, false): return .onboarding
+        if !userEmail.isEmpty {
+            return .tabBar
         }
+        
+        if onboardingCompleted {
+            return .login
+        }
+        
+        return .onboarding
     }
 }
 
@@ -43,7 +47,11 @@ struct ContentView: View {
         .animation(.default, value: router.root)
         .environmentObject(router)
         .onOpenURL { url in
-            try? router.executeDeepLink(url: url)
+            do {
+                try router.executeDeepLink(url: url)
+            } catch {
+                print("DeepLink error: \(error)")
+            }
         }
     }
 }

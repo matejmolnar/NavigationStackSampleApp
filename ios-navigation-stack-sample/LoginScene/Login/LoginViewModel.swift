@@ -8,7 +8,7 @@
 import SwiftUI
 
 class LoginViewModel: ObservableObject {
-    @AppStorage("loggedIn") private var loggedIn: Bool = false
+    @AppStorage("userEmail") private var userEmail: String = ""
     
     @Published var email = ""
     @Published var password = ""
@@ -22,6 +22,6 @@ class LoginViewModel: ObservableObject {
             throw LoginError.passwordEmpty
         }
         
-        loggedIn = true
+        userEmail = email
     }
 }

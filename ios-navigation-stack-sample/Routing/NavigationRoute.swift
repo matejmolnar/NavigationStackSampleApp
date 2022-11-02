@@ -9,4 +9,6 @@ import Foundation
 
 protocol NavigationRoute: Hashable {
     static func path(from pathComponents: [String], queryDict: [String: String]) -> [Self]?
+    
+    var authorizationLevel: DeepLinkAuthorizationLevel { get }
 }

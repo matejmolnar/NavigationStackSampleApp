@@ -9,4 +9,5 @@ import Foundation
 
 enum DeepLinkError: Error {
     case invalidURL
+    case unauthorized
 }

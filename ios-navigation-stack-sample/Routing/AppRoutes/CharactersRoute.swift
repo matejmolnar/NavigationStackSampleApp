@@ -10,6 +10,10 @@ import Foundation
 enum CharactersRoute: NavigationRoute {
     case character(id: Int, route: CharacterDetailRoute? = nil)
     
+    var authorizationLevel: DeepLinkAuthorizationLevel {
+        .loggedIn
+    }
+    
     static func path(
         from pathComponents: [String],
         queryDict: [String: String]

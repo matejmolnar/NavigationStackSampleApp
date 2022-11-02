@@ -14,6 +14,10 @@ struct ProfileView: View {
     
     var body: some View {
         VStack {
+            Text(model.userEmail)
+                .font(.title3)
+                .padding(.bottom, 50)
+            
             Button {
                 model.logout()
                 router.root = .login
@@ -22,5 +26,6 @@ struct ProfileView: View {
                     .foregroundColor(.pink)
             }
         }
+        .navigationTitle("Profile")
     }
 }

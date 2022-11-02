@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import DependencyInjection
 
 @main
 struct ios_navigation_stack_sampleApp: App {

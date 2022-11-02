@@ -11,6 +11,10 @@ enum OnboardingRoute: String, NavigationRoute {
     case step1
     case step2
     
+    var authorizationLevel: DeepLinkAuthorizationLevel {
+        .none
+    }
+    
     static func path(
         from pathComponents: [String],
         queryDict: [String: String]

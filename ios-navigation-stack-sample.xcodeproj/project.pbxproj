@@ -33,6 +33,8 @@
 		5848518128FEC19100694341 /* SettingsRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5848518028FEC19100694341 /* SettingsRoute.swift */; };
 		5848518328FEC2B000694341 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5848518228FEC2B000694341 /* ProfileView.swift */; };
 		5848518628FEC97B00694341 /* LoginError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5848518528FEC97B00694341 /* LoginError.swift */; };
+		5874C5C42912C00A006B0C68 /* DeepLinkAuthorizator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5874C5C32912C00A006B0C68 /* DeepLinkAuthorizator.swift */; };
+		5874C5C62912C01C006B0C68 /* DeepLinkAuthorizationLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5874C5C52912C01C006B0C68 /* DeepLinkAuthorizationLevel.swift */; };
 		5879FDF6290B0C9600552583 /* NavigationRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5879FDF5290B0C9600552583 /* NavigationRoute.swift */; };
 		589E0A652901622D0042E91B /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589E0A642901622D0042E91B /* Character.swift */; };
 		589E0A67290162E60042E91B /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589E0A66290162E60042E91B /* Episode.swift */; };
@@ -81,6 +83,8 @@
 		5848518028FEC19100694341 /* SettingsRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRoute.swift; sourceTree = "<group>"; };
 		5848518228FEC2B000694341 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		5848518528FEC97B00694341 /* LoginError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginError.swift; sourceTree = "<group>"; };
+		5874C5C32912C00A006B0C68 /* DeepLinkAuthorizator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLinkAuthorizator.swift; sourceTree = "<group>"; };
+		5874C5C52912C01C006B0C68 /* DeepLinkAuthorizationLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLinkAuthorizationLevel.swift; sourceTree = "<group>"; };
 		5879FDF5290B0C9600552583 /* NavigationRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationRoute.swift; sourceTree = "<group>"; };
 		589E0A642901622D0042E91B /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		589E0A66290162E60042E91B /* Episode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
@@ -155,6 +159,8 @@
 				5821C9D529115059008299B1 /* Tab.swift */,
 				5879FDF5290B0C9600552583 /* NavigationRoute.swift */,
 				5848515828FE901E00694341 /* NavigationRoot.swift */,
+				5874C5C32912C00A006B0C68 /* DeepLinkAuthorizator.swift */,
+				5874C5C52912C01C006B0C68 /* DeepLinkAuthorizationLevel.swift */,
 			);
 			path = Routing;
 			sourceTree = "<group>";
@@ -431,6 +437,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5874C5C62912C01C006B0C68 /* DeepLinkAuthorizationLevel.swift in Sources */,
 				5821C9D829115174008299B1 /* TabBarRouter.swift in Sources */,
 				58E972D4290175B20077967A /* Store.swift in Sources */,
 				5848517F28FEBFD900694341 /* SettingsView.swift in Sources */,
@@ -465,6 +472,7 @@
 				5848515528FE8F6600694341 /* Router.swift in Sources */,
 				5848518128FEC19100694341 /* SettingsRoute.swift in Sources */,
 				5848518328FEC2B000694341 /* ProfileView.swift in Sources */,
+				5874C5C42912C00A006B0C68 /* DeepLinkAuthorizator.swift in Sources */,
 				58E8F03D28EDBE4500C0B357 /* ios_navigation_stack_sampleApp.swift in Sources */,
 				5848516F28FEA9BB00694341 /* CharactersView.swift in Sources */,
 				5848516428FE9B0C00694341 /* RegistrationView.swift in Sources */,

@@ -22,6 +22,7 @@ class Router: ObservableObject {
         }
     }
     
+    private lazy var deepLinkAuthorizator = DeepLinkAuthorizator()
     private let routeTypes: [any NavigationRoute.Type] = [
         OnboardingRoute.self,
         LoginRoute.self,
@@ -48,6 +49,10 @@ extension Router {
     func executeDeepLink(url: URL) throws {
         guard let path = path(from: url) else {
             throw DeepLinkError.invalidURL
+        }
+        
+        guard deepLinkAuthorizator.isPathAuthorized(path) else {
+            throw DeepLinkError.unauthorized
         }
         
         switch path {

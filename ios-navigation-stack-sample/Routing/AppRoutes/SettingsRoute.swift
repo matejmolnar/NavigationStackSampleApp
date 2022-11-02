@@ -10,6 +10,10 @@ import Foundation
 enum SettingsRoute: String, NavigationRoute {
     case profile
     
+    var authorizationLevel: DeepLinkAuthorizationLevel {
+        .loggedIn
+    }
+    
     static func path(
         from pathComponents: [String],
         queryDict: [String: String]
