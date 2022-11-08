@@ -10,8 +10,17 @@ import Foundation
 enum CharactersRoute: NavigationRoute {
     case character(id: Int, route: CharacterDetailRoute? = nil)
     
+    static var rootAuthorizationLevel: DeepLinkAuthorizationLevel {
+        .signedInUser
+    }
+    
     var authorizationLevel: DeepLinkAuthorizationLevel {
-        .loggedIn
+        switch self {
+        case .character(_, .none):
+            return .signedInUser
+        case .character(_, .some):
+            return .premiumUser
+        }
     }
     
     static func path(

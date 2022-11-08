@@ -11,6 +11,10 @@ enum LoginRoute: NavigationRoute {
     case registration(email: String, password: String)
     case forgotPassword(email: String)
     
+    static var rootAuthorizationLevel: DeepLinkAuthorizationLevel {
+        .onboardingCompleted
+    }
+    
     var authorizationLevel: DeepLinkAuthorizationLevel {
         .onboardingCompleted
     }

@@ -47,33 +47,33 @@ class Router: ObservableObject {
 // MARK: - Public functions
 extension Router {
     func executeDeepLink(url: URL) throws {
-        guard let path = path(from: url) else {
+        guard let routeData = path(from: url) else {
             throw DeepLinkError.invalidURL
         }
         
-        guard deepLinkAuthorizator.isPathAuthorized(path) else {
+        guard deepLinkAuthorizator.isRouteDataAuthorized(routeData) else {
             throw DeepLinkError.unauthorized
         }
         
-        switch path {
-        case let (path as [OnboardingRoute]) as Any:
+        switch routeData.type {
+        case is OnboardingRoute.Type:
             root = .onboarding
-            onboardingPath = path
-        case let (path as [LoginRoute]) as Any:
+            onboardingPath = routeData.path as! [OnboardingRoute]
+        case is LoginRoute.Type:
             root = .login
-            loginPath = path
-        case let (path as [SettingsRoute]) as Any:
+            loginPath = routeData.path as! [LoginRoute]
+        case is SettingsRoute.Type:
             root = .tabBar
             tabBar.isSettingsPresented = true
-            tabBar.settingsPath = path
-        case let (path as [EpisodesRoute]) as Any:
+            tabBar.settingsPath = routeData.path as! [SettingsRoute]
+        case is EpisodesRoute.Type:
             root = .tabBar
             tabBar.selectedTab = .episodes
-            tabBar.episodesPath = path
-        case let (path as [CharactersRoute]) as Any:
+            tabBar.episodesPath = routeData.path as! [EpisodesRoute]
+        case is CharactersRoute.Type:
             root = .tabBar
             tabBar.selectedTab = .characters
-            tabBar.charactersPath = path
+            tabBar.charactersPath = routeData.path as! [CharactersRoute]
         default: break
         }
     }
@@ -81,13 +81,14 @@ extension Router {
 
 // MARK: - Private functions
 private extension Router {
-    func path(from url: URL) -> ([any NavigationRoute])? {
+    func path(from url: URL) -> NavigationRouteData? {
+        // In case the first path component is "/" it gets removed
         let pathComponents = Array(url.pathComponents.drop { $0 == "/"})
         let queryDict = queryDict(for: url)
         
         for routeType in routeTypes {
             if let path = routeType.path(from: pathComponents, queryDict: queryDict) {
-                return path
+                return NavigationRouteData(routeType, path)
             }
         }
         

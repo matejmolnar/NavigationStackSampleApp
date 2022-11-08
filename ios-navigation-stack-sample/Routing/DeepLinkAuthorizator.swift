@@ -9,22 +9,31 @@ import SwiftUI
 
 struct DeepLinkAuthorizator {
     @AppStorage("userEmail") private var userEmail: String = ""
+    @AppStorage("premiumEnabled") private var premiumEnabled: Bool = false
     @AppStorage("onboardingCompleted") private var onboardingCompleted: Bool = false
     
     private var authorizationLevel: DeepLinkAuthorizationLevel {
-        if !userEmail.isEmpty {
-            return .loggedIn
+        guard onboardingCompleted else {
+            return .none
         }
         
-        if onboardingCompleted {
+        guard !userEmail.isEmpty else {
             return .onboardingCompleted
         }
         
-        return .none
+        guard premiumEnabled else {
+            return .signedInUser
+        }
+        
+        return .premiumUser
     }
     
-    func isPathAuthorized(_ path: [any NavigationRoute]) -> Bool {
-        for route in path where route.authorizationLevel > authorizationLevel {
+    func isRouteDataAuthorized(_ routeData: NavigationRouteData) -> Bool {
+        if routeData.type.rootAuthorizationLevel > authorizationLevel {
+            return false
+        }
+        
+        for route in routeData.path where route.authorizationLevel > authorizationLevel {
             return false
         }
         

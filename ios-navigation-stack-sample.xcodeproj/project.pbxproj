@@ -35,6 +35,7 @@
 		5848518628FEC97B00694341 /* LoginError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5848518528FEC97B00694341 /* LoginError.swift */; };
 		5874C5C42912C00A006B0C68 /* DeepLinkAuthorizator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5874C5C32912C00A006B0C68 /* DeepLinkAuthorizator.swift */; };
 		5874C5C62912C01C006B0C68 /* DeepLinkAuthorizationLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5874C5C52912C01C006B0C68 /* DeepLinkAuthorizationLevel.swift */; };
+		5874C5C829199CEB006B0C68 /* NavigationRouteData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5874C5C729199CEB006B0C68 /* NavigationRouteData.swift */; };
 		5879FDF6290B0C9600552583 /* NavigationRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5879FDF5290B0C9600552583 /* NavigationRoute.swift */; };
 		589E0A652901622D0042E91B /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589E0A642901622D0042E91B /* Character.swift */; };
 		589E0A67290162E60042E91B /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589E0A66290162E60042E91B /* Episode.swift */; };
@@ -85,6 +86,7 @@
 		5848518528FEC97B00694341 /* LoginError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginError.swift; sourceTree = "<group>"; };
 		5874C5C32912C00A006B0C68 /* DeepLinkAuthorizator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLinkAuthorizator.swift; sourceTree = "<group>"; };
 		5874C5C52912C01C006B0C68 /* DeepLinkAuthorizationLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLinkAuthorizationLevel.swift; sourceTree = "<group>"; };
+		5874C5C729199CEB006B0C68 /* NavigationRouteData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationRouteData.swift; sourceTree = "<group>"; };
 		5879FDF5290B0C9600552583 /* NavigationRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationRoute.swift; sourceTree = "<group>"; };
 		589E0A642901622D0042E91B /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		589E0A66290162E60042E91B /* Episode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
@@ -157,8 +159,9 @@
 				5848515428FE8F6600694341 /* Router.swift */,
 				5821C9D729115174008299B1 /* TabBarRouter.swift */,
 				5821C9D529115059008299B1 /* Tab.swift */,
-				5879FDF5290B0C9600552583 /* NavigationRoute.swift */,
 				5848515828FE901E00694341 /* NavigationRoot.swift */,
+				5879FDF5290B0C9600552583 /* NavigationRoute.swift */,
+				5874C5C729199CEB006B0C68 /* NavigationRouteData.swift */,
 				5874C5C32912C00A006B0C68 /* DeepLinkAuthorizator.swift */,
 				5874C5C52912C01C006B0C68 /* DeepLinkAuthorizationLevel.swift */,
 			);
@@ -481,6 +484,7 @@
 				58E972C52901661D0077967A /* RegistrationViewModel.swift in Sources */,
 				5848516828FE9D3700694341 /* OnboardingRoute.swift in Sources */,
 				5848516628FE9CFC00694341 /* LoginRoute.swift in Sources */,
+				5874C5C829199CEB006B0C68 /* NavigationRouteData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

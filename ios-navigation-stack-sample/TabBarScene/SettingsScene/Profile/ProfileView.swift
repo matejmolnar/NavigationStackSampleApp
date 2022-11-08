@@ -14,9 +14,30 @@ struct ProfileView: View {
     
     var body: some View {
         VStack {
-            Text(model.userEmail)
-                .font(.title3)
-                .padding(.bottom, 50)
+            VStack {
+                HStack {
+                    Text("Email")
+                        .font(.title3)
+                    
+                    Spacer()
+                    
+                    Text(model.userEmail)
+                        .font(.title3)
+                }
+                
+                HStack {
+                    Text("Premium")
+                        .font(.title3)
+                    
+                    Spacer()
+                    
+                    Toggle(isOn: model.$premiumEnabled) {
+                        
+                    }
+                }
+            }
+            .padding(.bottom, 50)
+            .padding(.horizontal, 50)
             
             Button {
                 model.logout()

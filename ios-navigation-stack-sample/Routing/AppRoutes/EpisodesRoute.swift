@@ -10,8 +10,12 @@ import Foundation
 enum EpisodesRoute: NavigationRoute {
     case episode(id: Int)
     
+    static var rootAuthorizationLevel: DeepLinkAuthorizationLevel {
+        .signedInUser
+    }
+    
     var authorizationLevel: DeepLinkAuthorizationLevel {
-        .loggedIn
+        .signedInUser
     }
     
     static func path(

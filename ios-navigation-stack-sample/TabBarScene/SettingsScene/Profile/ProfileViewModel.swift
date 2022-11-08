@@ -9,8 +9,10 @@ import SwiftUI
 
 class ProfileViewModel: ObservableObject {
     @AppStorage("userEmail") var userEmail: String = ""
+    @AppStorage("premiumEnabled") var premiumEnabled: Bool = false
     
     func logout() {
         userEmail = ""
+        premiumEnabled = false
     }
 }
