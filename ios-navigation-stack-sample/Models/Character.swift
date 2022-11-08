@@ -8,6 +8,8 @@
 import Foundation
 
 struct Character: Equatable, Hashable, Identifiable {
-    let id: UUID = .init()
-    let name: String
+    let id: Int
+    var name: String {
+        "Character \(id)"
+    }
 }

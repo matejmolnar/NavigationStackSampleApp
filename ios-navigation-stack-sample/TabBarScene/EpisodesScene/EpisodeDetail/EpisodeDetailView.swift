@@ -12,9 +12,9 @@ struct EpisodeDetailView: View {
     
     var body: some View {
         List {
-            ForEach(model.characters) { character in
-                NavigationLink(value: TabRoute.character(character: character, route: nil)) {
-                    Text(character.name)
+            ForEach(model.episodes) { episode in
+                NavigationLink(value: EpisodesRoute.episode(id: episode.id)) {
+                    Text(episode.name)
                 }
             }
         }

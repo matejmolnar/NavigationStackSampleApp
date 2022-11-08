@@ -8,15 +8,19 @@
 import SwiftUI
 
 class ContentViewModel: ObservableObject {
+    @AppStorage("userEmail") private var userEmail: String = ""
     @AppStorage("onboardingCompleted") private var onboardingCompleted: Bool = false
-    @AppStorage("loggedIn") private var loggedIn: Bool = false
     
     var initialNavigationRoot: NavigationRoot {
-        switch (onboardingCompleted, loggedIn) {
-        case (_, true): return .tabBar
-        case (true, false): return .login
-        case (false, false): return .onboarding
+        if !userEmail.isEmpty {
+            return .tabBar
         }
+        
+        if onboardingCompleted {
+            return .login
+        }
+        
+        return .onboarding
     }
 }
 
@@ -43,14 +47,11 @@ struct ContentView: View {
         .animation(.default, value: router.root)
         .environmentObject(router)
         .onOpenURL { url in
-            // You should parse URL and navigate to an appropriate view.
-            
-            router.root = .tabBar
-            router.tabBar.selectedTab = 1
-            router.tabBar.episodesPath = [
-                .episode(Episode(name: "Deeplinked episode")),
-                .character(character: Character(name: "Deeplinked character"), route: .sheet(.init(title: "Deeplinked sheet")))
-            ]
+            do {
+                try router.executeDeepLink(url: url)
+            } catch {
+                print("DeepLink error: \(error)")
+            }
         }
     }
 }
